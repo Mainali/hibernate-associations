@@ -20,9 +20,7 @@ public class Category implements Serializable {
     @Column(name = "CATEGORY_NAME", length = 255, nullable = false)
     private String name;
 
-    @ManyToMany(fetch=FetchType.LAZY)
-    @JoinTable(name="category_item", joinColumns={@JoinColumn(name="category_id")},
-    			inverseJoinColumns={@JoinColumn(name="item_id")})
+    @ManyToMany(fetch= FetchType.EAGER, mappedBy="categories")
     private List<Item> items = new ArrayList<Item>();
 
     

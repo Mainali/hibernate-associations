@@ -48,7 +48,9 @@ import java.util.*;
 
      private BigDecimal reservePrice;
 
-     @ManyToMany(fetch= FetchType.LAZY, mappedBy="items")
+     @ManyToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+     @JoinTable(name="category_item", joinColumns={@JoinColumn(name="item_id")},
+     			inverseJoinColumns={@JoinColumn(name="category_id")})
      private Set<Category> categories = new HashSet<Category>();
 
     @Transient
